@@ -23,13 +23,13 @@ function Project() {
 
                                 <div className='submit'>
                                     <hr />
-                                    <button type='button'>Btn submit</button>
+                                    <button type='button' id='subm' onClick={Fn}>Submit</button>
                                 </div>
                             </form>
                         </div>
                         <div className="result">
                             <div className="result-y">
-                                <span>--</span>
+                                <span></span>
                                 <label htmlFor="">years</label>
                             </div>
                             <div className="result-m">
@@ -47,5 +47,24 @@ function Project() {
         </main>
     )
 }
-
 export default Project;
+
+
+const Fn = () => {
+    let userDay = document.querySelector('#day').value;
+    let userMonth = document.querySelector('#month').value;
+    let userYear = document.querySelector('#year').value;
+
+    if (!userDay) { 
+        alert('Campo não preenchido!')
+    } else {
+        var d = new Date();
+        var dia = d.getDay();
+        var mes = d.getMonth() + 1;
+        var ano = d.getFullYear();
+        let totalDay = Math.abs(dia - userDay);
+        let totalMonth = Math.abs(mes - userMonth);
+        let totalYear = Math.abs(ano - userYear);
+        console.log(totalDay, totalMonth, totalYear)
+    }
+}
